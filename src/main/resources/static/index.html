@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/stomp.js"></script>
+<script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
+<script type="text/javascript">
+	var stompClient = null;
+</script>
+</head>
+<body>
+	<a href="javascript:connect(1);">connect1</a>
+	<a href="javascript:connect(2);">connect2</a>
+	<br/>
+	<a href="javascript:sendMessage(1)">send1</a>
+	<a href="javascript:sendMessage(2)">send2</a>
+	
+	<div id="message"></div>
+</body>
+</html>
