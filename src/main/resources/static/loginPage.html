@@ -8,15 +8,30 @@
 <script type="text/javascript" src="resources/js/jquery-ui.js"></script>
 
 <script type="text/javascript" src="resources/js/login.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/loginPage.css" />
 </head>
 <body>
 
-	name:
-	<input type="text" id="name" />
-	<br /> password:
-	<input type="text" id="password" />
-	<br/>
-	<a href="javascript:login();">login</a>
+	<div class="longiPanel">
+		<div class="line"></div>
+		<div class="line">
+			<input type="text" id="name" placeholder="用户名/邮箱" />
+		</div>
+		<div class="line">
+			<input type="password" id="password" placeholder="密码" />
+		</div>
+		<div class="line errorMessage" id="errorMessage">
+			
+		</div>
+		<div class="line">
+			<button onclick="login()">登录</button>
+		</div>
+		<div class="line">
+			<a href="#">注册</a>
+		</div>
+	</div>
 
 </body>
 </html>

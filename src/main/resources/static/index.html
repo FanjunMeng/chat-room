@@ -13,14 +13,49 @@
 <script type="text/javascript">
 	var stompClient = null;
 </script>
+
+<link rel="stylesheet" type="text/css" href="resources/css/index.css" />
 </head>
 <body>
+	<div class="head">
+		<div class="headItem"></div>
+		<div class="headItem">
+			<a href="javascript:logout();">退出</a>
+		</div>
+		<div class="headItem" id="name"></div>
+	</div>
+
+	<div class="content">
+		<div class="chatroom">
+			<div class="title">东方幻想乡</div>
+			<div class="peopleNumber">人数：23/23</div>
+		</div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		<div class="chatroom"></div>
+		
+	</div>
+
+
+
 	<a href="javascript:connect(1);">connect1</a>
 	<a href="javascript:connect(2);">connect2</a>
-	<br/>
+	<br />
 	<a href="javascript:sendMessage(1)">send1</a>
 	<a href="javascript:sendMessage(2)">send2</a>
-	
+
 	<div id="message"></div>
 </body>
 </html>

@@ -11,27 +11,14 @@ import edu.sdu.chatroom.entity.User;
 import edu.sdu.chatroom.service.UserService;
 
 @RestController
-public class LoginController {
+public class LogoutController {
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(String name, String password, HttpSession session) {
-
-		User user = userService.findByName(name);
-
-		if (user == null) {
-			user = userService.findByEmail(name);
-			if (user == null) {
-				return "error1";
-			}
-		}
-
-		if (!user.getPassword().equals(password)) {
-			return "error2";
-		}
-		session.setAttribute("name", name);
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String login(HttpSession session) {
+		session.removeAttribute("name");
 		return "success";
 	}
 
