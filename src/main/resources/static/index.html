@@ -14,6 +14,8 @@
 	var stompClient = null;
 </script>
 
+<link rel="stylesheet" type="text/css"
+	href="resources/css/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/index.css" />
 </head>
 <body>
@@ -25,30 +27,17 @@
 		<div class="headItem" id="name"></div>
 	</div>
 
-	<div class="content">
-		<div class="chatroom">
-			<div class="title">东方幻想乡</div>
-			<div class="peopleNumber">人数：23/23</div>
+	<div class="content"></div>
+
+	<div id="dialog">
+		<div class="line">
+			<input type="text" id="title" placeholder="聊天室名称" />
 		</div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		<div class="chatroom"></div>
-		
+		<div class="line">
+			<input type="text" id="capacity" placeholder="最大人数" />
+		</div>
+		<div class="line errorMessage" id="errorMessage"></div>
 	</div>
-
-
 
 	<a href="javascript:connect(1);">connect1</a>
 	<a href="javascript:connect(2);">connect2</a>
@@ -57,5 +46,6 @@
 	<a href="javascript:sendMessage(2)">send2</a>
 
 	<div id="message"></div>
+
 </body>
 </html>

@@ -31,7 +31,7 @@ button {
 	font-size: 15px;
 	font-family: 微软雅黑;
 	cursor: pointer;
-	border: 1px solid transparent;
+	border: 0px solid transparent;
 	color: #FFF8E3;
 	background-color: #DB4105;
 }

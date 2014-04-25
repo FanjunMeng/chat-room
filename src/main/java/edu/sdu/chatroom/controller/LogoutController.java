@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.sdu.chatroom.entity.User;
 import edu.sdu.chatroom.service.UserService;
 
 @RestController
