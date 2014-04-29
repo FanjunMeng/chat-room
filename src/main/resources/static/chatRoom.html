@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/stomp.js"></script>
+<script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
+
+<script type="text/javascript" src="resources/js/chatRoom.js"></script>
+
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/chatRoom.css" />
+</head>
+<body>
+	<div class="head">
+		<div class="headItem"></div>
+		<div class="headItem">
+			<a href="javascript:logout();">退出</a>
+		</div>
+		<div class="headItem" id="name"></div>
+		<div class="headItem2" id="roomTitle"></div>
+	</div>
+
+	<div class="sendMessage">
+		<textarea placeholder="输入消息，按回车键发送"></textarea>
+	</div>
+
+	<div class="messageContainer">
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaaa
+			</div>
+			<div class="message" style="background-color: #E51400">但反反复复反反复复反反复复吩咐dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+		</div>
+		<div class="messageItem">
+			<div class="systemMessage">--------admin进入了聊天室--------</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #339933">但反反复复反反复复反反复复吩咐ddddddddddddddd反复复反反复复吩咐dddddddddddddddddddd反复复反反复复吩咐dddddddddddddddddddd反复复反反复复吩咐dddddddddddddddddddd反复复反反复复吩咐dddddddddddddddddddd反复复反反复复吩咐ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #1BA1E2">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #F09609">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #8CBF26">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #00ABA9">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #FF0097">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #E671B8">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #996600">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+		<div class="messageItem">
+			<div class="icon">
+				<img src="http://missevan-icon.oss.aliyuncs.com/icons/icon00.png" />
+				aaaa
+			</div>
+			<div class="message" style="background-color: #A200FF">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		</div>
+	</div>
+
+	<div class="receiveMessage"></div>
+
+	<a href="javascript:connect(1);">connect1</a>
+	<a href="javascript:connect(2);">connect2</a>
+	<br />
+	<a href="javascript:sendMessage(1)">send1</a>
+	<a href="javascript:sendMessage(2)">send2</a>
+
+</body>
+</html>

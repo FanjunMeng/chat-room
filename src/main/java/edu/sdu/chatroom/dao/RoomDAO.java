@@ -32,7 +32,6 @@ public class RoomDAO {
 
 						room.setCapacity(rs.getInt("capacity"));
 						room.setCurrentSize(rs.getInt("currentSize"));
-						room.setPassword(rs.getString("password"));
 						return room;
 					}
 				});
@@ -54,10 +53,30 @@ public class RoomDAO {
 
 								room.setCapacity(rs.getInt("capacity"));
 								room.setCurrentSize(rs.getInt("currentSize"));
-								room.setPassword(rs.getString("password"));
 								return room;
 							}
 						}, title);
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+	public Room findByRoomId(int roomId) {
+		List<Room> list = jdbcTemplate
+				.query("select id,title,capacity,currentSize,password from t_room where id=?",
+						new RowMapper<Room>() {
+							@Override
+							public Room mapRow(ResultSet rs, int rowNum)
+									throws SQLException {
+								Room room = new Room();
+								room.setId(rs.getInt("id"));
+								room.setTitle(rs.getString("title"));
+								room.setCapacity(rs.getInt("capacity"));
+								room.setCurrentSize(rs.getInt("currentSize"));
+								return room;
+							}
+						}, roomId);
 		if (list.size() > 0) {
 			return list.get(0);
 		}

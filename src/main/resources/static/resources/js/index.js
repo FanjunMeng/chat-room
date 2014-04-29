@@ -1,28 +1,3 @@
-function connect(chatRoomId) {
-	var socket = new SockJS('/chatRoom');
-	stompClient = Stomp.over(socket);
-	stompClient.connect({}, function(frame) {
-		console.log('Connected: ' + frame);
-		stompClient.subscribe('/topic/chatRoom/' + chatRoomId,
-				function(message) {
-					alert(JSON.parse(message.body).content);
-				});
-	});
-}
-
-function sendMessage(chatRoomId) {
-	stompClient.send("/app/chatRoom/" + chatRoomId, {}, JSON.stringify({
-		'chatRoomId' : chatRoomId,
-		'name' : name,
-		'content' : 'hehehheheheheheheh'
-	}));
-}
-
-function disconnect() {
-	stompClient.disconnect();
-	console.log("Disconnected");
-}
-
 $(document).ready(function() {
 	$.ajax({
 		type : "GET",
@@ -89,7 +64,8 @@ $(document).ready(function() {
 function generateRooms(rooms) {
 	var roomNumber = rooms.length;
 	for ( var i = 0; i < roomNumber; i++) {
-		var title = $("<div></div>").addClass("title").text(rooms[i].title);
+		var title = $("<div></div>").addClass("title").text(rooms[i].title)
+				.attr("onclick", "enterChatRoom(" + rooms[i].id + ");");
 		var peopleNumber = $("<div></div>").addClass("peopleNumber").text(
 				"人数：" + rooms[i].currentSize + "/" + rooms[i].capacity);
 		var chatroom = $("<div></div>").addClass("chatroom").append(title,
@@ -168,7 +144,7 @@ function addRoom() {
 		$("#errorMessage").text("请输入最大人数");
 		return;
 	}
-	if(!$.isNumeric(capacity)){
+	if (!$.isNumeric(capacity)) {
 		$("#capacity").css("border-color", "#ff0039");
 		$("#errorMessage").css("display", "inline");
 		$("#errorMessage").text("请输入数字");
@@ -232,6 +208,10 @@ function initDialog() {
 
 function openDialog() {
 	$("#dialog").dialog("open");
+}
+
+function enterChatRoom(roomId) {
+	window.open("/chatRoom.html?roomId=" + roomId);
 }
 
 function logout() {

@@ -3,6 +3,7 @@ package edu.sdu.chatroom.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,11 @@ public class RoomController {
 	@RequestMapping(value = "/rooms", method = RequestMethod.GET)
 	public List<Room> rooms() {
 		return roomService.find();
+	}
+	
+	@RequestMapping(value = "/rooms/{roomId}", method = RequestMethod.GET)
+	public Room getRoomById(@PathVariable int roomId) {
+		return roomService.findByRoomId(roomId);
 	}
 
 	@RequestMapping(value = "/rooms", method = RequestMethod.POST)

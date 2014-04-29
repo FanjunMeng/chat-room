@@ -21,10 +21,17 @@ public class RoomService {
 		return roomDAO.find();
 	}
 
+	@Transactional(readOnly = true)
 	public Room findByTitle(String title) {
 		return roomDAO.findByTitle(title);
 	}
 	
+	@Transactional(readOnly = true)
+	public Room findByRoomId(int roomId) {
+		return roomDAO.findByRoomId(roomId);
+	}
+	
+	@Transactional
 	public void insert(Room room) {
 		roomDAO.insert(room);
 	}
