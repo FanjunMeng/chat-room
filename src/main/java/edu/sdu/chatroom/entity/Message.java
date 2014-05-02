@@ -12,6 +12,8 @@ public class Message {
 	private String content;
 	
 	private int type;
+	
+	private String backgroundColor;
 
 	public int getChatRoomId() {
 		return chatRoomId;
@@ -43,6 +45,14 @@ public class Message {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public String getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setBackgroundColor(String backgroundColor) {
+		this.backgroundColor = backgroundColor;
 	}
 
 }

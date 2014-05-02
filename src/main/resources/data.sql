@@ -3,6 +3,11 @@ insert into t_user (name,password,email,isAdmin)
 		select 'admin' name,'admin' password,'940483935@qq.com' email,true isAdmin) temp
 	where not exists (select * from t_user where name='admin');
 	
+insert into t_user (name,password,email,isAdmin) 
+	select name,password,email,isAdmin from(
+		select 'user' name,'user' password,'568710368@qq.com' email,false isAdmin) temp
+	where not exists (select * from t_user where name='user');
+	
 delete from t_room;
 insert into t_room(title,capacity,currentSize,password) values('万事屋',10,0,'');
 insert into t_room(title,capacity,currentSize,password) values('东方幻想乡',10,0,'');

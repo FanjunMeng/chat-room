@@ -38,13 +38,22 @@ $(document).ready(function() {
 		error : function() {
 		}
 	});
+	$(document).keypress(function(e) {
+		if (e.keyCode == 13) {
+			e.preventDefault();
+			if ($.trim($("#inputMessage").val()) == "") {
+				$("#inputMessage").effect("highlight", [], 500);
+			} else {
+				sendMessage(roomId, name, $("#inputMessage").val(), 1);
+			}
+			$("#inputMessage").val("");
+		}
+	});
+	$(window).bind('beforeunload', function() {
+		disconnect();
+	});
 
 	connect(roomId);
-});
-
-$(window).unload(function() {
-	disconnect();
-	alert("Goodbye!");
 });
 
 function connect(chatRoomId) {
@@ -62,24 +71,39 @@ function connect(chatRoomId) {
 						var messageItem = $("<div></div>").addClass(
 								"messageItem").append(systemMessage);
 						$(".messageContainer").prepend(messageItem);
+						messageItem.effect("slide", {direction:"up"}, 300);
 					} else if (message.type == 1) {
-
+						var img = $("<img></img>").attr("src",
+								"resources/img/default.png");
+						var name = $("<div></div>").addClass("name").text(
+								message.name);
+						var icon = $("<div></div>").addClass("icon").append(
+								img, name);
+						var message = $("<div></div>").addClass("message").css(
+								"background-color", message.backgroundColor)
+								.text(message.content);
+						var messageItem = $("<div></div>").addClass(
+								"messageItem").append(icon, message);
+						$(".messageContainer").prepend(messageItem);
+						messageItem.effect("slide", {direction:"up"}, 300);
 					}
 				});
-		sendMessage(roomId, name + "进入了房间", 2);
+		sendMessage(roomId, name, name + "进入了房间", 2);
 	});
 }
 
-function sendMessage(chatRoomId, message, type) {
+function sendMessage(chatRoomId, name, message, type) {
 	stompClient.send("/app/chatRoom/" + chatRoomId, {}, JSON.stringify({
 		'chatRoomId' : chatRoomId,
-		'name' : "",
+		'name' : name,
 		'type' : type,
 		'content' : message,
+		'backgroundColor' : '',
 	}));
 }
 
 function disconnect() {
+	sendMessage(roomId, name, name + "离开了房间", 2);
 	stompClient.disconnect();
 	console.log("Disconnected");
 }
