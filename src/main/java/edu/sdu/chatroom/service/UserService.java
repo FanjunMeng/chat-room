@@ -23,6 +23,11 @@ public class UserService {
 		return userDAO.findByEmail(email);
 	}
 	
+	@Transactional
+	public void insert(User user) {
+		userDAO.insert(user);
+	}
+	
 	public UserDAO getUserDAO() {
 		return userDAO;
 	}
@@ -30,4 +35,5 @@ public class UserService {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+	
 }

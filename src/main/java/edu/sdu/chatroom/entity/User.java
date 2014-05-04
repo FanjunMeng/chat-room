@@ -10,6 +10,17 @@ public class User {
 
 	private boolean isAdmin;
 
+	public User() {
+
+	}
+
+	public User(String email, String name, String password, boolean isAdmin) {
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.isAdmin = isAdmin;
+	}
+
 	public String getName() {
 		return name;
 	}

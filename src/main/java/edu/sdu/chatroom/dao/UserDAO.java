@@ -59,6 +59,13 @@ public class UserDAO {
 		return list.get(0);
 	}
 
+	public void insert(User user) {
+		jdbcTemplate
+				.update("insert into t_user (name,password,email,isAdmin) values(?,?,?,?)",
+						user.getName(), user.getPassword(), user.getEmail(),
+						user.isAdmin());
+	}
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}

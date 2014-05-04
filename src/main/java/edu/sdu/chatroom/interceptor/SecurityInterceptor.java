@@ -16,12 +16,15 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		// 登录页面不不判断
-		if ("/login".equals(request.getRequestURI())) {
+		// 登录、注册页面不不判断
+		if ("/login".equals(request.getRequestURI())
+				|| "/registry".equals(request.getRequestURI())
+				|| "/checkEmail".equals(request.getRequestURI())
+				|| "/checkName".equals(request.getRequestURI())) {
 			return true;
 		}
 		HttpSession session = request.getSession();
-		if(session.getAttribute("name")!=null){
+		if (session.getAttribute("name") != null) {
 			return true;
 		}
 

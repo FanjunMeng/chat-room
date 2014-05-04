@@ -48,12 +48,11 @@ a:hover {
 	font-weight: bold;
 }
 
-.loginPanel {
+.registryPanel {
 	position: fixed;
-	top: 30%;
+	top: 18%;
 	left: 35%;
 	width: 416px;
-	height: 234px;
 	background-color: #FFF8E3;
 }
 
