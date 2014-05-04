@@ -49,6 +49,29 @@ $(document).ready(function() {
 			}
 		} ],
 	});
+	$("#message").dialog({
+		dialogClass : "no-close",
+		title : "",
+		width : "323",
+		height : "184",
+		autoOpen : false,
+		modal : true,
+		show : {
+			effect : "blind",
+			duration : 500
+		},
+		hide : {
+			effect : "blind",
+			duration : 500
+		},
+		buttons : [ {
+			text : "确定",
+			class : "dialog-bottom-ok",
+			click : function() {
+				$(this).dialog("close");
+			}
+		} ],
+	});
 	$(document).keyup(function(e) {
 		if (e.keyCode == 13) {
 			addRoom();
@@ -211,7 +234,24 @@ function openDialog() {
 }
 
 function enterChatRoom(roomId) {
-	window.open("/chatRoom.html?roomId=" + roomId);
+	var canEnterChatRoom = false;
+	$.ajax({
+		type : "GET",
+		url : "rooms/" + roomId,
+		async : false,
+		success : function(result) {
+			if (result.currentSize < result.capacity) {
+				canEnterChatRoom = true;
+			}
+		},
+		error : function() {
+		}
+	});
+	if (canEnterChatRoom) {
+		window.open("/chatRoom.html?roomId=" + roomId);
+	} else {
+		$("#message").dialog("open");
+	}
 }
 
 function logout() {

@@ -71,7 +71,9 @@ function connect(chatRoomId) {
 						var messageItem = $("<div></div>").addClass(
 								"messageItem").append(systemMessage);
 						$(".messageContainer").prepend(messageItem);
-						messageItem.effect("slide", {direction:"up"}, 300);
+						messageItem.effect("slide", {
+							direction : "up"
+						}, 300);
 					} else if (message.type == 1) {
 						var img = $("<img></img>").attr("src",
 								"resources/img/default.png");
@@ -85,10 +87,21 @@ function connect(chatRoomId) {
 						var messageItem = $("<div></div>").addClass(
 								"messageItem").append(icon, message);
 						$(".messageContainer").prepend(messageItem);
-						messageItem.effect("slide", {direction:"up"}, 300);
+						messageItem.effect("slide", {
+							direction : "up"
+						}, 300);
 					}
 				});
 		sendMessage(roomId, name, name + "进入了房间", 2);
+		$.ajax({
+			type : "PUT",
+			url : "rooms/" + roomId +"?name="+name+"&addOrRemoveAPelple=1",
+			success : function(message) {
+				console.debug(message);
+			},
+			error : function() {
+			}
+		});
 	});
 }
 
@@ -105,6 +118,15 @@ function sendMessage(chatRoomId, name, message, type) {
 function disconnect() {
 	sendMessage(roomId, name, name + "离开了房间", 2);
 	stompClient.disconnect();
+	$.ajax({
+		type : "PUT",
+		url : "rooms/" + roomId +"?name="+name+"&addOrRemoveAPelple=-1",
+		success : function(message) {
+			console.debug(message);
+		},
+		error : function() {
+		}
+	});
 	console.log("Disconnected");
 }
 

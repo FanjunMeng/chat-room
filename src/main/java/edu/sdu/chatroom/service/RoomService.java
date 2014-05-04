@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.sdu.chatroom.dao.RoomDAO;
 import edu.sdu.chatroom.entity.Room;
 
-
 @Component
 public class RoomService {
 
@@ -25,17 +24,24 @@ public class RoomService {
 	public Room findByTitle(String title) {
 		return roomDAO.findByTitle(title);
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Room findByRoomId(int roomId) {
 		return roomDAO.findByRoomId(roomId);
 	}
-	
+
 	@Transactional
 	public void insert(Room room) {
 		roomDAO.insert(room);
 	}
-	
+
+	@Transactional
+	public void updateRoomCurrentSizeByRoomId(int roomId, int addOrRemoveAPelple) {
+		Room room = roomDAO.findByRoomId(roomId);
+		room.setCurrentSize(room.getCurrentSize()+addOrRemoveAPelple);
+		roomDAO.updateByRoomId(room);
+	}
+
 	public RoomDAO getRoomDAO() {
 		return roomDAO;
 	}
@@ -43,5 +49,5 @@ public class RoomService {
 	public void setRoomDAO(RoomDAO roomDAO) {
 		this.roomDAO = roomDAO;
 	}
-	
+
 }

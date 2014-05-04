@@ -90,6 +90,13 @@ public class RoomDAO {
 						room.getCurrentSize(), room.getPassword());
 	}
 
+	public void updateByRoomId(Room room) {
+		jdbcTemplate
+				.update("update t_room set title=?,capacity=?,currentSize=?  where id=?",
+						room.getTitle(), room.getCapacity(),
+						room.getCurrentSize(), room.getId());
+	}
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -97,4 +104,5 @@ public class RoomDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+
 }
