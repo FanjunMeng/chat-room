@@ -1,0 +1,224 @@
+html {
+	padding: 0px;
+}
+
+body {
+	margin: 0px;
+	background-color: #FFF8E3;
+}
+
+input {
+	padding: 10px 18px;
+	height: 25px;
+	width: 200px;
+	font-size: 15px;
+	font-family: 微软雅黑;
+	color: #33332D;
+	border: 1px solid #cccccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, box-shadow
+		ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.head {
+	margin: 0;
+	padding:8px;
+	position: fixed;
+	width: 100%;
+	height: 36px;
+	left:0;
+	top:0;
+	background-color:#33332D;
+}
+
+.headItem{
+	margin:5px 10px;
+	min-width:10px;
+	float: right;
+	color:#FFF8E3;
+	font-family: 微软雅黑;
+	font-size: 16px;
+	cursor:pointer;
+}
+
+.headItem2{
+	margin:5px 10px;
+	min-width:10px;
+	float: left;
+	color:#FFF8E3;
+	font-family: 微软雅黑;
+	font-size: 16px;
+	cursor:pointer;
+}
+
+.headItem a{
+	color:#FFF8E3;
+	text-decoration: none;
+}
+
+.headItem a:hover{
+	font-weight: bold;
+}
+
+.content{
+	margin:53px 0 0 0;
+	padding:0;
+	position: absolute;
+	width:100%;
+	z-index:-1;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.line {
+	position: relative;
+	margin: 5px auto 0px auto;
+	padding: 5px 85px 0px 85px;
+}
+
+.line button{
+	padding: 10px 18px;
+	width: 238px;
+	height: 40px;
+	font-size: 15px;
+	font-family: 微软雅黑;
+	cursor: pointer;
+	border: 0px solid transparent;
+	color: #FFF8E3;
+	background-color: #DB4105;
+}
+
+.errorMessage {
+	display: none;
+	font-size: 10px;
+	font-family: 微软雅黑;
+	color: #ff0039;
+}
+
+.dialog-bottom-ok{
+	color: #FFF8E3;
+	background-color: #DB4105;
+}
+
+.dialog-bottom-cancel{
+	color: #FFF8E3;
+	background-color: #9FB4CC;
+}
+
+
+.left{
+	position: absolute;
+	margin:0;
+	padding:0;
+	width:200px;
+}
+
+.right{
+	position: absolute;
+	margin:0;
+	margin-left:200px;
+	padding:0;
+	height:700px;
+	width:700px;
+}
+
+.previewIcon{
+	position: absolute;
+	margin:0;
+	padding:0;
+	width:50px;
+	height: 50px;
+	overflow: hidden;
+	left:150px;
+	top:50px;
+	background-color:#CCCC9F;
+}
+.previewIconLabel{
+	position: absolute;
+	margin:0;
+	padding:0;
+	width:50px;
+	height: 50px;
+	overflow: hidden;
+	left:160px;
+	top:100px;
+}
+
+.currentIcon{
+	position: absolute;
+	margin:0;
+	padding:0;
+	left:50px;
+	top:50px;
+}
+
+.currentIconLabel{
+	position: absolute;
+	margin:0;
+	padding:0;
+	left:45px;
+	top:100px;
+}
+
+
+.currentIcon img{
+	width:50px;
+	height: 50px;
+}
+
+.uploadButton{
+	position: absolute;
+	margin:0;
+	padding:0;
+	left:45px;
+	top:150px;
+}
+
+.cutIconButton{
+	position: absolute;
+	margin:0;
+	padding:0;
+	left:150px;
+	top:150px;
+}
+
+.cutIconButton button {
+	padding: 5px 10px;
+	width: 60px;
+	height: 40px;
+	font-size: 15px;
+	font-family: 微软雅黑;
+	cursor: pointer;
+	border: 0px solid transparent;
+	color: #FFF8E3;
+	background-color: #DB4105;
+}
+
+.uploadedIcon{
+	margin:50px;
+	height:600px;
+	width:600px;
+	background-color:#CCCC9F;
+}
+
+
+h1{
+	margin-left:200px;
+	font-family: 微软雅黑;
+	color:#33332D;
+	cursor:pointer;
+}
+
+.subContent{
+	margin-left:200px;
+	margin-bottom:50px;
+	width:900px;
+	height:700px;
+	background-color:#E8E3C3;
+	font-family: 微软雅黑;
+	color:#33332D;
+}

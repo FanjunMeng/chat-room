@@ -18,20 +18,21 @@ public class UserDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	public User findByName(String name) {
-		List<User> list = jdbcTemplate.query(
-				"select name,password,email,isAdmin from t_user where name=?",
-				new RowMapper<User>() {
-					@Override
-					public User mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						User user = new User();
-						user.setName(rs.getString("name"));
-						user.setPassword(rs.getString("password"));
-						user.setEmail(rs.getString("email"));
-						user.setAdmin(rs.getBoolean("isAdmin"));
-						return user;
-					}
-				}, name);
+		List<User> list = jdbcTemplate
+				.query("select name,password,email,isAdmin,iconPath from t_user where name=?",
+						new RowMapper<User>() {
+							@Override
+							public User mapRow(ResultSet rs, int rowNum)
+									throws SQLException {
+								User user = new User();
+								user.setName(rs.getString("name"));
+								user.setPassword(rs.getString("password"));
+								user.setEmail(rs.getString("email"));
+								user.setAdmin(rs.getBoolean("isAdmin"));
+								user.setIconPath(rs.getString("iconPath"));
+								return user;
+							}
+						}, name);
 		if (list.size() == 0) {
 			return null;
 		}
@@ -39,20 +40,21 @@ public class UserDAO {
 	}
 
 	public User findByEmail(String email) {
-		List<User> list = jdbcTemplate.query(
-				"select name,password,email,isAdmin from t_user where email=?",
-				new RowMapper<User>() {
-					@Override
-					public User mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						User user = new User();
-						user.setName(rs.getString("name"));
-						user.setPassword(rs.getString("password"));
-						user.setEmail(rs.getString("email"));
-						user.setAdmin(rs.getBoolean("isAdmin"));
-						return user;
-					}
-				}, email);
+		List<User> list = jdbcTemplate
+				.query("select name,password,email,isAdmin,iconPath from t_user where email=?",
+						new RowMapper<User>() {
+							@Override
+							public User mapRow(ResultSet rs, int rowNum)
+									throws SQLException {
+								User user = new User();
+								user.setName(rs.getString("name"));
+								user.setPassword(rs.getString("password"));
+								user.setEmail(rs.getString("email"));
+								user.setAdmin(rs.getBoolean("isAdmin"));
+								user.setIconPath(rs.getString("iconPath"));
+								return user;
+							}
+						}, email);
 		if (list.size() == 0) {
 			return null;
 		}
@@ -61,9 +63,19 @@ public class UserDAO {
 
 	public void insert(User user) {
 		jdbcTemplate
-				.update("insert into t_user (name,password,email,isAdmin) values(?,?,?,?)",
+				.update("insert into t_user (name,password,email,isAdmin,iconPath) values(?,?,?,?,?)",
 						user.getName(), user.getPassword(), user.getEmail(),
-						user.isAdmin());
+						user.isAdmin(), "resources/img/default.png");
+	}
+
+	public void updateIconPathByName(String name, String targetName) {
+		jdbcTemplate.update("update t_user set iconPath=? where name=?",
+				targetName, name);
+	}
+
+	public void updatePasswordByName(String name, String newPassword) {
+		jdbcTemplate.update("update t_user set password=? where name=?",
+				newPassword, name);
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
@@ -73,4 +85,5 @@ public class UserDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+
 }

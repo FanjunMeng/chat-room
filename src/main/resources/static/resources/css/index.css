@@ -40,6 +40,17 @@ input {
 	color:#FFF8E3;
 	font-family: 微软雅黑;
 	font-size: 16px;
+	cursor:pointer;
+}
+
+.headItem2{
+	margin:5px 10px;
+	min-width:10px;
+	float: left;
+	color:#FFF8E3;
+	font-family: 微软雅黑;
+	font-size: 16px;
+	cursor:pointer;
 }
 
 .headItem a{

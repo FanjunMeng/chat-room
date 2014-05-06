@@ -20,7 +20,8 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 		if ("/login".equals(request.getRequestURI())
 				|| "/registry".equals(request.getRequestURI())
 				|| "/checkEmail".equals(request.getRequestURI())
-				|| "/checkName".equals(request.getRequestURI())) {
+				|| "/checkName".equals(request.getRequestURI())
+				|| "/iconUpload".equals(request.getRequestURI())) {
 			return true;
 		}
 		HttpSession session = request.getSession();

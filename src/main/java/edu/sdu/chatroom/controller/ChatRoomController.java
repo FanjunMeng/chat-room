@@ -3,14 +3,19 @@ package edu.sdu.chatroom.controller;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 
 import edu.sdu.chatroom.entity.Message;
+import edu.sdu.chatroom.service.UserService;
 
 @Controller
 public class ChatRoomController {
+
+	@Autowired
+	private UserService userService;
 
 	String[] colors = { "#E51400", "#339933", "#1BA1E2", "#1BA1E2", "#8CBF26",
 			"#00ABA9", "#FF0097", "#E671B8", "#996600", " #A200FF" };
@@ -24,6 +29,8 @@ public class ChatRoomController {
 			return message;
 		} else if (message.getType() == Message.USER_MESSAGE) {
 			message.setBackgroundColor(getColors(chatRoomId, message));
+			message.setIconPath(userService.findByName(message.getName())
+					.getIconPath());
 			return message;
 		}
 		return message;

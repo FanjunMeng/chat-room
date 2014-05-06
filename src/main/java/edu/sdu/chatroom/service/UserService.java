@@ -22,10 +22,20 @@ public class UserService {
 	public User findByEmail(String email) {
 		return userDAO.findByEmail(email);
 	}
-	
+
 	@Transactional
 	public void insert(User user) {
 		userDAO.insert(user);
+	}
+
+	@Transactional
+	public void updateIconPathByName(String name, String targetName) {
+		userDAO.updateIconPathByName(name, targetName);
+	}
+
+	@Transactional
+	public void updatePasswordByName(String name, String newPassword) {
+		userDAO.updatePasswordByName(name,newPassword);
 	}
 	
 	public UserDAO getUserDAO() {

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/stomp.js"></script>
+<script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
+<script type="text/javascript" src="resources/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.uploadify.js"></script>
+
+<script type="text/javascript" src="resources/js/profile.js"></script>
+
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/css/jquery.Jcrop.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/css/uploadify.css" />
+
+<link rel="stylesheet" type="text/css" href="resources/css/profile.css" />
+</head>
+<body>
+	<div class="head">
+		<div class="headItem"></div>
+		<div class="headItem">
+			<a href="javascript:logout();">退出</a>
+		</div>
+		<div class="headItem" id="name"></div>
+		<div class="headItem2">个人中心</div>
+	</div>
+
+	<div class="content">
+		<h1>修改头像</h1>
+		<div class="subContent">
+			<div class="left">
+				<div class="currentIcon">
+					<img />
+				</div>
+				<div class="currentIconLabel">当前头像</div>
+				<div class="previewIcon">
+					<img />
+				</div>
+				<div class="previewIconLabel">预览</div>
+				<div class="uploadButton">
+					<input type="file" id="iconUpload" />
+				</div>
+				<div class="cutIconButton">
+					<button onclick="cutIcon();">确定</button>
+				</div>
+			</div>
+			<div class="right">
+				<div class="uploadedIcon"></div>
+			</div>
+
+		</div>
+		<h1>修改密码</h1>
+		<div class="subContent" style="height: 300px">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line">
+				<input id="oldPassword" type="password" placeholder="原密码" />
+			</div>
+			<div class="line errorMessage" id="errorMessageOldPassword"></div>
+			
+			<div class="line">
+				<input id="newPassword" type="password" placeholder="新密码" />
+			</div>
+			<div class="line errorMessage" id="errorMessageNewPassword"></div>
+			
+			<div class="line">
+				<input id="newPasswordConfirm" type="password" placeholder="新密码确认" />
+			</div>
+			<div class="line errorMessage" id="errorMessageNewPasswordConfirm"></div>
+			<div class="line">
+				<button onclick="changePassword();">确定</button>
+			</div>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>

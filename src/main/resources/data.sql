@@ -1,11 +1,11 @@
-insert into t_user (name,password,email,isAdmin) 
-	select name,password,email,isAdmin from(
-		select 'admin' name,'admin' password,'940483935@qq.com' email,true isAdmin) temp
+insert into t_user (name,password,email,isAdmin,iconPath) 
+	select name,password,email,isAdmin,iconPath from(
+		select 'admin' name,'admin' password,'940483935@qq.com' email,true isAdmin,'resources/img/default.png' iconPath) temp
 	where not exists (select * from t_user where name='admin');
 	
-insert into t_user (name,password,email,isAdmin) 
-	select name,password,email,isAdmin from(
-		select 'user' name,'user' password,'568710368@qq.com' email,false isAdmin) temp
+insert into t_user (name,password,email,isAdmin,iconPath) 
+	select name,password,email,isAdmin,iconPath from(
+		select 'user' name,'user' password,'568710368@qq.com' email,false isAdmin,'resources/img/default.png' iconPath) temp
 	where not exists (select * from t_user where name='user');
 	
 delete from t_room;

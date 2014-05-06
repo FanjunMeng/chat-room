@@ -14,6 +14,8 @@ public class Message {
 	private int type;
 	
 	private String backgroundColor;
+	
+	private String iconPath;
 
 	public int getChatRoomId() {
 		return chatRoomId;
@@ -53,6 +55,14 @@ public class Message {
 
 	public void setBackgroundColor(String backgroundColor) {
 		this.backgroundColor = backgroundColor;
+	}
+
+	public String getIconPath() {
+		return iconPath;
+	}
+
+	public void setIconPath(String iconPath) {
+		this.iconPath = iconPath;
 	}
 
 }

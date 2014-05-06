@@ -10,6 +10,8 @@ public class User {
 
 	private boolean isAdmin;
 
+	private String iconPath;
+
 	public User() {
 
 	}
@@ -51,6 +53,14 @@ public class User {
 
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	public String getIconPath() {
+		return iconPath;
+	}
+
+	public void setIconPath(String iconPath) {
+		this.iconPath = iconPath;
 	}
 
 }
