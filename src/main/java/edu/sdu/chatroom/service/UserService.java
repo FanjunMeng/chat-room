@@ -1,5 +1,7 @@
 package edu.sdu.chatroom.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,11 @@ public class UserService {
 		return userDAO.findByEmail(email);
 	}
 
+	@Transactional(readOnly = true)
+	public List<User> find(int startIndex) {
+		return userDAO.find(startIndex);
+	}
+
 	@Transactional
 	public void insert(User user) {
 		userDAO.insert(user);
@@ -35,9 +42,14 @@ public class UserService {
 
 	@Transactional
 	public void updatePasswordByName(String name, String newPassword) {
-		userDAO.updatePasswordByName(name,newPassword);
+		userDAO.updatePasswordByName(name, newPassword);
 	}
-	
+
+	@Transactional
+	public void deleteByName(String name) {
+		userDAO.deleteByName(name);
+	}
+
 	public UserDAO getUserDAO() {
 		return userDAO;
 	}
@@ -45,5 +57,4 @@ public class UserService {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
-	
 }

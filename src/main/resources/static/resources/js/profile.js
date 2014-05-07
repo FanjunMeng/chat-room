@@ -99,6 +99,7 @@ $(document).ready(
 
 				},
 				error : function() {
+					location.href = "/loginPage.html";
 				}
 			});
 			$(document).keyup(function(e) {

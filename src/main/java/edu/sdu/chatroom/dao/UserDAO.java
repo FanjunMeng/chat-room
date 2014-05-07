@@ -61,6 +61,23 @@ public class UserDAO {
 		return list.get(0);
 	}
 
+	public List<User> find(int startIndex) {
+		return jdbcTemplate
+				.query("select name,email,isAdmin,iconPath from t_user limit ? offset ?",
+						new RowMapper<User>() {
+							@Override
+							public User mapRow(ResultSet rs, int rowNum)
+									throws SQLException {
+								User user = new User();
+								user.setName(rs.getString("name"));
+								user.setEmail(rs.getString("email"));
+								user.setAdmin(rs.getBoolean("isAdmin"));
+								user.setIconPath(rs.getString("iconPath"));
+								return user;
+							}
+						}, 6, startIndex);
+	}
+
 	public void insert(User user) {
 		jdbcTemplate
 				.update("insert into t_user (name,password,email,isAdmin,iconPath) values(?,?,?,?,?)",
@@ -78,6 +95,10 @@ public class UserDAO {
 				newPassword, name);
 	}
 
+	public void deleteByName(String name) {
+		jdbcTemplate.update("delete from t_user where name=?", name);
+	}
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -85,5 +106,4 @@ public class UserDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
 }

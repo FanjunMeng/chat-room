@@ -9,11 +9,12 @@ $(document).ready(
 					if (result.admin) {
 						var admin = $("<div></div>").addClass("headItem").text(
 								"后台管理").attr("onclick",
-								"window.open('/profile.html');");
+								"window.open('/admin.html');");
 						$(".head .headItem").last().after(admin);
 					}
 				},
 				error : function() {
+					location.href = "/loginPage.html";
 				}
 			});
 			$.ajax({

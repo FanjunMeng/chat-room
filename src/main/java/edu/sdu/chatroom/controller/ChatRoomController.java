@@ -17,7 +17,7 @@ public class ChatRoomController {
 	@Autowired
 	private UserService userService;
 
-	String[] colors = { "#E51400", "#339933", "#1BA1E2", "#1BA1E2", "#8CBF26",
+	String[] colors = { "#E51400", "#339933", "#1BA1E2", "#F09609", "#8CBF26",
 			"#00ABA9", "#FF0097", "#E671B8", "#996600", " #A200FF" };
 	int index = 0;
 

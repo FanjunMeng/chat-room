@@ -25,13 +25,27 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		HttpSession session = request.getSession();
-		if (session.getAttribute("name") != null) {
-			return true;
+		// 未登录
+		if (session.getAttribute("name") == null) {
+			log.info("request:" + request.getRequestURI()
+					+ "   redirect to login");
+			if ("/".equals(request.getRequestURI())) {
+				response.sendRedirect("/loginPage.html");
+			} else {
+				response.sendError(500);
+			}
+			return false;
 		}
 
-		log.info("request:" + request.getRequestURI() + "   redirect to login");
-		response.sendRedirect("/loginPage.html");
-		return false;
+		// 非管理员
+		if (request.getRequestURI().startsWith("/users")) {
+			if (session.getAttribute("isAdmin") == null) {
+				response.sendError(500);
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	@Override

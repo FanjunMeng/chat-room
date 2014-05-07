@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/stomp.js"></script>
+<script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
+
+<script type="text/javascript" src="resources/js/admin.js"></script>
+
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/jquery-ui.css" />
+
+<link rel="stylesheet" type="text/css" href="resources/css/admin.css" />
+</head>
+<body>
+	<div class="head">
+		<div class="headItem"></div>
+		<div class="headItem">
+			<a href="javascript:logout();">退出</a>
+		</div>
+		<div class="headItem" id="name"
+			onclick="window.open('/profile.html');"></div>
+		<div class="headItem2">后台管理中心</div>
+	</div>
+
+	<div class="content">
+		<h1>用户管理</h1>
+		<div class="subContent">
+			<table id="usersTable">
+				<thead>
+					<tr>
+						<th width="15%">头像</th>
+						<th width="30%">用户名</th>
+						<th width="30%">邮箱</th>
+						<th width="15%">是否为管理员</th>
+						<th width="10%">删除</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<a id="getMoreUsers" href="javascript:getUsers();">更多...</a>
+			<button onclick="openAddUserDialog();">增加用户</button>
+		</div>
+		<h1>聊天室管理</h1>
+		<div class="subContent"></div>
+	</div>
+
+	<div id="message">
+		<div class="line"></div>
+	</div>
+
+	<div id="addUserDialog">
+		<div class="line"></div>
+		<div class="line">
+			<input type="text" id="email" placeholder="邮箱" />
+		</div>
+		<div class="line errorMessage" id="errorMessageEmail"></div>
+
+		<div class="line">
+			<input type="text" id="nameForAdd" placeholder="用户名" />
+		</div>
+		<div class="line errorMessage" id="errorMessageName"></div>
+
+		<div class="line">
+			<input type="password" id="password" placeholder="密码" />
+		</div>
+		<div class="line errorMessage" id="errorMessagePassword"></div>
+
+		<div class="line">
+			<input type="password" id="confirmPassword" placeholder="确认密码" />
+		</div>
+		<div class="line errorMessage" id="errorMessageConfirmPassword"></div>
+
+		<div class="line">
+			是否为管理员：是<input type="radio" value="true" name="isAdmin" /> 否<input
+				type="radio" value="false" checked="checked" name="isAdmin" />
+		</div>
+
+	</div>
+
+</body>
+</html>

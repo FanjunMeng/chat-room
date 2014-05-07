@@ -25,6 +25,7 @@ $(document).ready(function() {
 			$("#name").text(result.name);
 		},
 		error : function() {
+			location.href = "/loginPage.html";
 		}
 	});
 
