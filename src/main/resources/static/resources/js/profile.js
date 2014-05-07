@@ -19,6 +19,29 @@ $(document).ready(
 				$("#newPasswordConfirm").css("border-color", "#cccccc");
 				$("#errorMessageNewPasswordConfirm").css("display", "none");
 			});
+			$("#message").dialog({
+				dialogClass : "no-close",
+				title : "",
+				width : "323",
+				height : "184",
+				autoOpen : false,
+				modal : true,
+				show : {
+					effect : "blind",
+					duration : 500
+				},
+				hide : {
+					effect : "blind",
+					duration : 500
+				},
+				buttons : [ {
+					text : "确定",
+					class : "dialog-bottom-ok",
+					click : function() {
+						$(this).dialog("close");
+					}
+				} ],
+			});
 			$.ajax({
 				type : "GET",
 				url : "currentUser",
@@ -129,6 +152,8 @@ function cutIcon() {
 					error : function() {
 					}
 				});
+				$("#message div").text("头像修改成功");
+				$("#message").dialog("open");
 			} else {
 
 			}
@@ -193,14 +218,15 @@ function changePassword() {
 	$.ajax({
 		type : "POST",
 		url : "changePassword",
-		data:{
-			"name":name,
-			"oldPassword":oldPassword,
-			"newPassword":newPassword
+		data : {
+			"name" : name,
+			"oldPassword" : oldPassword,
+			"newPassword" : newPassword
 		},
 		success : function(message) {
 			if ("success" == message) {
-				console.log("logout");
+				$("#message div").text("密码修改成功");
+				$("#message").dialog("open");
 			} else if ("error" == message) {
 				$("#oldPassword").css("border-color", "#ff0039");
 				$("#errorMessageOldPassword").text("原密码错误");

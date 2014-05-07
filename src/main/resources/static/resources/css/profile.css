@@ -203,6 +203,8 @@ input {
 	height:600px;
 	width:600px;
 	background-color:#CCCC9F;
+	overflow-x:hidden;
+	overflow-y:auto;
 }
 
 

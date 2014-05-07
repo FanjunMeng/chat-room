@@ -31,7 +31,10 @@ public class LoginController {
 		if (!user.getPassword().equals(password)) {
 			return "error2";
 		}
-		session.setAttribute("name", name);
+		session.setAttribute("name", user.getName());
+		if (user.isAdmin()) {
+			session.setAttribute("isAdmin", true);
+		}
 		return "success";
 	}
 

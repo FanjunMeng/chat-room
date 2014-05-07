@@ -1,88 +1,95 @@
-$(document).ready(function() {
-	$.ajax({
-		type : "GET",
-		url : "currentUser",
-		success : function(result) {
-			console.debug(result);
-			$("#name").text(result.name);
-		},
-		error : function() {
-		}
-	});
-	$.ajax({
-		type : "GET",
-		url : "rooms",
-		success : function(result) {
-			console.debug(result);
-			generateRooms(result);
-		},
-		error : function() {
-		}
-	});
-	$("#dialog").dialog({
-		dialogClass : "no-close",
-		title : "创建聊天室",
-		width : "450",
-		height : "277",
-		autoOpen : false,
-		modal : true,
-		show : {
-			effect : "blind",
-			duration : 500
-		},
-		hide : {
-			effect : "blind",
-			duration : 500
-		},
-		buttons : [ {
-			text : "确定",
-			class : "dialog-bottom-ok",
-			click : function() {
-				addRoom();
-			}
-		}, {
-			text : "取消",
-			class : "dialog-bottom-cancel",
-			click : function() {
-				$(this).dialog("close");
-				initDialog();
-			}
-		} ],
-	});
-	$("#message").dialog({
-		dialogClass : "no-close",
-		title : "",
-		width : "323",
-		height : "184",
-		autoOpen : false,
-		modal : true,
-		show : {
-			effect : "blind",
-			duration : 500
-		},
-		hide : {
-			effect : "blind",
-			duration : 500
-		},
-		buttons : [ {
-			text : "确定",
-			class : "dialog-bottom-ok",
-			click : function() {
-				$(this).dialog("close");
-			}
-		} ],
-	});
-	$(document).keyup(function(e) {
-		if (e.keyCode == 13) {
-			addRoom();
-		}
-	});
-	$("input").focus(function() {
-		$("#errorMessage").css("display", "none");
-		$("#title").css("border-color", "#cccccc");
-		$("#capacity").css("border-color", "#cccccc");
-	});
-});
+$(document).ready(
+		function() {
+			$.ajax({
+				type : "GET",
+				url : "currentUser",
+				success : function(result) {
+					console.debug(result);
+					$("#name").text(result.name);
+					if (result.admin) {
+						var admin = $("<div></div>").addClass("headItem").text(
+								"后台管理").attr("onclick",
+								"window.open('/profile.html');");
+						$(".head .headItem").last().after(admin);
+					}
+				},
+				error : function() {
+				}
+			});
+			$.ajax({
+				type : "GET",
+				url : "rooms",
+				success : function(result) {
+					console.debug(result);
+					generateRooms(result);
+				},
+				error : function() {
+				}
+			});
+			$("#dialog").dialog({
+				dialogClass : "no-close",
+				title : "创建聊天室",
+				width : "450",
+				height : "277",
+				autoOpen : false,
+				modal : true,
+				show : {
+					effect : "blind",
+					duration : 500
+				},
+				hide : {
+					effect : "blind",
+					duration : 500
+				},
+				buttons : [ {
+					text : "确定",
+					class : "dialog-bottom-ok",
+					click : function() {
+						addRoom();
+					}
+				}, {
+					text : "取消",
+					class : "dialog-bottom-cancel",
+					click : function() {
+						$(this).dialog("close");
+						initDialog();
+					}
+				} ],
+			});
+			$("#message").dialog({
+				dialogClass : "no-close",
+				title : "",
+				width : "323",
+				height : "184",
+				autoOpen : false,
+				modal : true,
+				show : {
+					effect : "blind",
+					duration : 500
+				},
+				hide : {
+					effect : "blind",
+					duration : 500
+				},
+				buttons : [ {
+					text : "确定",
+					class : "dialog-bottom-ok",
+					click : function() {
+						$(this).dialog("close");
+					}
+				} ],
+			});
+			$(document).keyup(function(e) {
+				if (e.keyCode == 13) {
+					addRoom();
+				}
+			});
+			$("input").focus(function() {
+				$("#errorMessage").css("display", "none");
+				$("#title").css("border-color", "#cccccc");
+				$("#capacity").css("border-color", "#cccccc");
+			});
+		});
 
 function generateRooms(rooms) {
 	var roomNumber = rooms.length;
