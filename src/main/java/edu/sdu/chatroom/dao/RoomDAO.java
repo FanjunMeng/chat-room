@@ -37,6 +37,23 @@ public class RoomDAO {
 				});
 	}
 
+	public List<Room> find(int startIndex) {
+		return jdbcTemplate
+				.query("select id,title,capacity,currentSize,password from t_room limit ? offset ?",
+						new RowMapper<Room>() {
+							@Override
+							public Room mapRow(ResultSet rs, int rowNum)
+									throws SQLException {
+								Room room = new Room();
+								room.setId(rs.getInt("id"));
+								room.setTitle(rs.getString("title"));
+								room.setCapacity(rs.getInt("capacity"));
+								room.setCurrentSize(rs.getInt("currentSize"));
+								return room;
+							}
+						}, 6, startIndex);
+	}
+
 	public Room findByTitle(String title) {
 		List<Room> list = jdbcTemplate
 				.query("select id,title,capacity,currentSize,password from t_room where title=?",
@@ -97,6 +114,10 @@ public class RoomDAO {
 						room.getCurrentSize(), room.getId());
 	}
 
+	public void deleteRoomById(int roomId) {
+		jdbcTemplate.update("delete from t_room where id=?", roomId);
+	}
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -104,5 +125,4 @@ public class RoomDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
 }

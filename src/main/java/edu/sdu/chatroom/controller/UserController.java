@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,14 +42,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users/{name}", method = RequestMethod.POST)
-	public String users(@PathVariable String name, String email,
+	public String addUser(@PathVariable String name, String email,
 			String password, boolean isAdmin) {
 		userService.insert(new User(email, name, password, isAdmin));
 		return "success";
 	}
 
 	@RequestMapping(value = "/users/{name}", method = RequestMethod.DELETE)
-	public String users(@PathVariable String name) {
+	public String deleteUserByName(@PathVariable String name) {
 		userService.deleteByName(name);
 		return "success";
 	}

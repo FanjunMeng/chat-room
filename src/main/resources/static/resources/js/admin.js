@@ -280,7 +280,8 @@ function getUsers() {
 				var td5 = $("<td></td>").append(deleteUser);
 				var tr = $("<tr></tr>").append(td1, td2, td3, td4, td5).css(
 						"background-color", colors[colorIndex1]).css("color",
-						"#FFFFFF").attr("id", "tableTrId" + result[i].name);
+						"#FFFFFF")
+						.attr("id", "usersTableTrId" + result[i].name);
 				colorIndex1 = (++colorIndex1) % 10;
 				$("#usersTable tbody").append(tr);
 			}
@@ -298,7 +299,7 @@ function deleteUser(name) {
 		url : "users/" + name,
 		success : function(message) {
 			if ("success" == message) {
-				$("#tableTrId"+name).remove();
+				$("#usersTableTrId" + name).remove();
 			} else {
 			}
 		},
@@ -395,5 +396,53 @@ function initDialog() {
 }
 
 function getRooms() {
+	$.ajax({
+		type : "GET",
+		url : "roomsForAdmin",
+		data : {
+			"startIndex" : startIndex2
+		},
+		success : function(result) {
+			console.debug(result);
+			if (result.length == 0) {
+				$("#getMoreRooms").text("没有更多了");
+			}
+			for ( var i = 0; i < result.length; i++) {
+				var td1 = $("<td></td>").text(result[i].title);
+				var td2 = $("<td></td>").text(result[i].currentSize);
+				var td3 = $("<td></td>").text(result[i].capacity);
+				var deleteRoom = $("<a></a>").attr("href",
+						"javascript:deleteRoom('" + result[i].id + "')");
+				var deleteImg = $("<img></img>").attr("width", "40px").attr(
+						"src", "resources/img/delete.png");
+				deleteRoom.append(deleteImg);
+				var td4 = $("<td></td>").append(deleteRoom);
+				var tr = $("<tr></tr>").append(td1, td2, td3, td4).css(
+						"background-color", colors[colorIndex2]).css("color",
+						"#FFFFFF").attr("id", "roomsTableTrId" + result[i].id);
+				colorIndex2 = (++colorIndex2) % 10;
+				$("#roomsTable tbody").append(tr);
+			}
+			startIndex2 += result.length;
+		},
+		error : function() {
+			location.href = "/loginPage.html";
+		}
+	});
+}
 
+function deleteRoom(id) {
+	$.ajax({
+		type : "DELETE",
+		url : "rooms/" + id,
+		success : function(message) {
+			if ("success" == message) {
+				$("#roomsTableTrId" + id).remove();
+			} else {
+			}
+		},
+		error : function() {
+
+		}
+	});
 }

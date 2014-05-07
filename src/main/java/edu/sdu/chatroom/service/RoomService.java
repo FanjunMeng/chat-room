@@ -21,6 +21,11 @@ public class RoomService {
 	}
 
 	@Transactional(readOnly = true)
+	public List<Room> find(int startIndex) {
+		return roomDAO.find(startIndex);
+	}
+
+	@Transactional(readOnly = true)
 	public Room findByTitle(String title) {
 		return roomDAO.findByTitle(title);
 	}
@@ -38,8 +43,13 @@ public class RoomService {
 	@Transactional
 	public void updateRoomCurrentSizeByRoomId(int roomId, int addOrRemoveAPelple) {
 		Room room = roomDAO.findByRoomId(roomId);
-		room.setCurrentSize(room.getCurrentSize()+addOrRemoveAPelple);
+		room.setCurrentSize(room.getCurrentSize() + addOrRemoveAPelple);
 		roomDAO.updateByRoomId(room);
+	}
+
+	@Transactional
+	public void deleteRoomById(int roomId) {
+		roomDAO.deleteRoomById(roomId);
 	}
 
 	public RoomDAO getRoomDAO() {
@@ -49,5 +59,4 @@ public class RoomService {
 	public void setRoomDAO(RoomDAO roomDAO) {
 		this.roomDAO = roomDAO;
 	}
-
 }

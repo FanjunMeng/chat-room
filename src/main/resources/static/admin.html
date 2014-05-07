@@ -48,7 +48,21 @@
 			<button onclick="openAddUserDialog();">增加用户</button>
 		</div>
 		<h1>聊天室管理</h1>
-		<div class="subContent"></div>
+		<div class="subContent">
+			<table id="roomsTable">
+				<thead>
+					<tr>
+						<th width="50%">聊天室</th>
+						<th width="20%">当前人数</th>
+						<th width="20%">最大人数</th>
+						<th width="10%">删除</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<a id="getMoreRooms" href="javascript:getRooms();">更多...</a>
+		</div>
 	</div>
 
 	<div id="message">

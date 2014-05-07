@@ -28,6 +28,11 @@ public class RoomController {
 		return roomService.find();
 	}
 
+	@RequestMapping(value = "/roomsForAdmin", method = RequestMethod.GET)
+	public List<Room> rooms(int startIndex) {
+		return roomService.find(startIndex);
+	}
+
 	@RequestMapping(value = "/rooms/{roomId}", method = RequestMethod.GET)
 	public Room getRoomById(@PathVariable int roomId) {
 		return roomService.findByRoomId(roomId);
@@ -59,6 +64,12 @@ public class RoomController {
 		}
 		roomService.insert(new Room(title, capacity));
 		return roomService.findByTitle(title);
+	}
+
+	@RequestMapping(value = "/rooms/{roomId}", method = RequestMethod.DELETE)
+	public String deleteRoomById(@PathVariable int roomId) {
+		roomService.deleteRoomById(roomId);
+		return "success";
 	}
 
 	public RoomService getRoomService() {

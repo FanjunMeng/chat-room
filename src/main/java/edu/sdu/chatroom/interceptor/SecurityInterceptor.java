@@ -44,7 +44,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 		}
-
+		request.getMethod();
 		return true;
 	}
 
